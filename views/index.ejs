@@ -1,0 +1,96 @@
+<link href="/Css/index.css" rel="stylesheet" type="text/css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="https://kit.fontawesome.com/79b594a165.js" crossorigin="anonymous"></script>
+<!-- <h1>Hello</h1> -->
+<div id="container">
+<div id="navContainer">
+    <%- include('./partials/navigationBar');%>
+    <%- include('./partials/video');%>
+</div>
+<div id="moviesDiv">
+    <div class="searchBarContainer">
+        
+    </div>
+   
+    <div class="trendingHeadingDiv"><h1 class="trendingHeading">Trending</h1></div>
+    <div class="trendingMovies">
+        <div class="bgImgDIv">
+
+<% json.forEach(function(element) { %>
+    <% let img = JSON.parse(element.thumbnail)%>
+<%if(img.hasOwnProperty("trending")){%>
+    <% console.log(element.isTrending)%>
+    <div class="backgroundImg" id="backgroundImg"
+    style="background-image:url(<%=img.trending.large%>)"  >
+       <div class="bookMarkedContainer">
+         <div class="bookMarkedDiv" id="bookMarkedDiv">
+    <img src="<%=(element.isBookMarked == '1')?'assets/icon-bookmark-full.svg':'assets/icon-bookmark-empty.svg'%>"  id="<%=element.title%>" onclick="updateBookMarked(this)" class="bookMarked"/>
+</div>
+
+</div>
+<div class="playButton"><i class="fa-solid fa-circle-play play"  value='<%=element.videopath%>' onclick="playVideo(this)"></i><p>play</p></div>
+<div class="imgDetailContainer">
+    <div class="imgDetail">
+        <div class="detail">
+            <p class="year"><%=element.year%></p>
+            <div class="categoryDiv">
+            <img class="categoryImg" src="<%=(element.category == 'TV Series')?'assets/icon-nav-tv-series.svg':'assets/icon-nav-movies.svg'%>"/>
+        </div>
+            <p class="imgType"><%=element.category%></p>
+            <p class="rating"><%=element.rating%></p>
+        </div>
+        <div class="movieTitleDiv">
+        <h2 class="title"><%=element.title%></h2>
+    </div>
+    </div>
+ </div>
+ </div>
+<%}%>
+
+<%})%>
+</div>
+    </div>
+    <div class="recommentHeadingDiv">
+    <h1 class="recommentHeading">Recommended for you</h1>
+</div>
+    <div class="recommentedMovies">
+       
+        <% json.forEach(function(element) { %>
+            <% let img = JSON.parse(element.thumbnail)%>
+            <%if(img.hasOwnProperty("regular")){%>
+                <div class="recommendedContainer">
+                <div class="backgroundImgRecommend"style="background-image:url(<%=img.regular.medium%>)" value='<%=element.videopath%>' >
+                    <div class="bookMarkedContainer">
+                        <div class="bookMarkedDiv">
+                        <img src="<%=(element.isBookMarked == '1')?'assets/icon-bookmark-full.svg':'assets/icon-bookmark-empty.svg'%>" id="<%=element.title%>" onclick="updateBookMarked(this)" class="bookMarked"/>
+                    </div>
+               
+                    </div>
+                    <div class="playButtonWHole"><i class="fa-solid fa-circle-play play" onclick="playVideo(this)" value='<%=element.videopath%>'></i><p>play</p></div>
+                      
+                </div>
+               
+                <div class="imgDetailContainerRecommend">
+                    <div class="imgDetailRecommend">
+                        <div class="detailRecommend">
+                            <p class="year"><%=element.year%></p>
+                            <div class="categoryDiv">
+                            <img class="categoryImg" src="<%=(element.category == 'TV Series')?'assets/icon-nav-tv-series.svg':'assets/icon-nav-movies.svg'%>"/>
+                        </div>
+                            <p class="imgType"><%=element.category%></p>
+                            <p class="rating"><%=element.rating%></p>
+                        </div>
+                        <div class="movieTitleDiv">
+                        <h2 class="title"><%=element.title%></h2>
+                    </div>
+                    </div>
+                </div> 
+               </div>
+    
+            <%}%>
+            
+            <%})%>
+    </div>
+ </div>
+</div>
+<script src="/Js/script.js"></script>

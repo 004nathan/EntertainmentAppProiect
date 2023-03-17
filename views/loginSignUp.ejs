@@ -1,0 +1,43 @@
+<link href="/Css/loginSignup.css" rel="stylesheet" type="text/css"/>
+<script src="https://kit.fontawesome.com/79b594a165.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<div id="loginOrSignupRoot">
+    <div id="loginOrSignupContainer">
+        <div class="icon_Div">
+            <img src="/assets/logo.svg"/>
+        </div>
+        <div class="login">
+            <h1 class="signInUpText">Sign Up</h1>
+            <div class="inputBox">
+                <input type="text" class="username" required/>
+                <span>Username</span>
+                <i></i>
+              
+            </div>
+            <p class="errorMsg errorMsgUserName">please fill the username</p>
+            <div class="inputBox">
+                <input type="password" class="password" required/>
+                <span>Password</span>
+                <i></i>
+              
+            </div>
+            <p class="errorMsg errorMsgPassword">please fill the password</p>
+            <div class="inputBox repeatPasswordInputBox">
+                <input type="password" class="repeatPassword" required/>
+                <span>Repeat password</span>
+                <i></i>
+             
+            </div>
+            <p class="errorMsg errorMsgRepeatPassword">please fill the repeat password</p>
+<input type="button" id="loginBtn" value="Create an account" onclick="SignUpCheck()"/>
+<div class="goSignUp">
+    <span class="changeDisplaytext">Already have a account?</span>
+    <p onclick="createSignIn()" class="changeSignUpBtnText">SignIn</p>
+</div>
+        </div>
+    </div>
+</div>
+<script>
+  
+</script>
+<script src="/Js/script.js"></script>

@@ -1,0 +1,63 @@
+<link href="/Css/index.css" rel="stylesheet" type="text/css"/>
+<script src="https://kit.fontawesome.com/79b594a165.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<div id="container">
+    <div id="navContainer">
+        <%- include('./partials/navigationBar');%>
+    </div>
+    <div id="moviesDivSeries">
+        <div class="searchBarContainer">
+            
+        </div>
+        <div class="recommentHeadingDiv">
+        <h1 class="recommentHeading">Tv Series</h1>
+    </div>
+    <%- include('./partials/video');%>
+    <div id="parentDiv">
+        <div class="tvseries">
+           
+            <% json.forEach(function(element) { %>
+                <%if(element.category == 'TV Series'){%>
+
+              
+                <% let img = JSON.parse(element.thumbnail)%>
+                <%if(img.hasOwnProperty("regular")){%>
+                    <div class="recommendedContainer" >
+                        <div class="imgParent">
+                    <div class="backgroundImgRecommend"style="background-image:url(<%=img.regular.medium%>)" value='<%=element.videopath%>' >
+                        <div class="bookMarkedContainer">
+                            <div class="bookMarkedDiv">
+                            <img src="<%=(element.isBookMarked == '1')?'assets/icon-bookmark-full.svg':'assets/icon-bookmark-empty.svg'%>" id="<%=element.title%>" onclick="updateBookMarked(this)" class="bookMarked"/>
+                        </div>
+                           
+                        </div>
+                        <div class="playButtonWHole"><i class="fa-solid fa-circle-play play"  value='<%=element.videopath%>' onclick="playVideo(this)"></i><p>play</p></div>
+                          
+                    </div>
+                  
+                    </div>
+                    <div class="imgDetailContainerRecommend">
+                        <div class="imgDetailRecommend">
+                            <div class="detailRecommend">
+                                <p class="year"><%=element.year%></p>
+                                <div class="categoryDiv">
+                                <img class="categoryImg" src="<%=(element.category == 'TV Series')?'assets/icon-nav-tv-series.svg':'assets/icon-nav-movies.svg'%>"/>
+                            </div>
+                                <p class="imgType"><%=element.category%></p>
+                                <p class="rating"><%=element.rating%></p>
+                            </div>
+                            <div class="movieTitleDiv">
+                            <h2 class="title"><%=element.title%></h2>
+                        </div>
+                        </div>
+                    </div> 
+                   </div>
+        
+                <%}%>
+                <%}%>
+                <%})%>
+        </div>
+    </div>
+     </div>
+    </div>
+    <script src="/Js/script.js"></script>
